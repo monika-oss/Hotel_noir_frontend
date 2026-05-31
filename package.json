@@ -27,7 +27,7 @@
     "swiper": "^12.2.0",
     "tailwindcss": "^4.3.0",
     "tsparticles": "^4.1.1",
-    "@tsparticles/slim": "^3.0.0",
+    "@tsparticles/slim": "^4.1.1",
     "zustand": "^5.0.14"
   },
   "devDependencies": {

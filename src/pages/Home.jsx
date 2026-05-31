@@ -1,7 +1,7 @@
 import React, { useEffect, useState, useCallback, useRef } from 'react';
 import { Link } from 'react-router-dom';
 import AOS from 'aos';
-import Particles from "@tsparticles/react";
+import Particles, { initParticlesEngine } from "@tsparticles/react";
 import { loadSlim } from "@tsparticles/slim";
 import { motion, AnimatePresence } from 'framer-motion';
 import { Swiper, SwiperSlide } from 'swiper/react';
@@ -30,8 +30,14 @@ const Home = () => {
   const [featuredMenu, setFeaturedMenu] = useState([]);
   const [activeCategory, setActiveCategory] = useState('All');
   
-  const particlesInit = useCallback(async engine => {
-    await loadSlim(engine);
+  const [init, setInit] = useState(false);
+
+  useEffect(() => {
+    initParticlesEngine(async (engine) => {
+      await loadSlim(engine);
+    }).then(() => {
+      setInit(true);
+    });
   }, []);
 
   useEffect(() => {
@@ -109,9 +115,9 @@ const Home = () => {
         {/* ================= 1. HERO SECTION ================= */}
         <section className="relative h-screen flex items-center justify-center pt-20 pb-8 px-4 md:px-8 lg:px-16 overflow-hidden z-10">
           {/* Luxury Gold Particles background */}
-          <Particles
-            id="tsparticles"
-            init={particlesInit}
+          {init && (
+            <Particles
+              id="tsparticles"
             options={{
               fullScreen: { enable: false, zIndex: -1 },
               particles: {
@@ -124,8 +130,9 @@ const Home = () => {
               },
               retina_detect: true
             }}
-            className="absolute inset-0 pointer-events-none z-0"
-          />
+              className="absolute inset-0 pointer-events-none z-0"
+            />
+          )}
 
           <div className="container mx-auto grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-12 items-center relative z-10">
             {/* Left Content Column */}

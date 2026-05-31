@@ -180,7 +180,7 @@ const Home = () => {
             <div 
               data-aos="fade-left"
               data-aos-delay="200"
-              className="lg:col-span-5 flex justify-center relative mt-12 lg:mt-0"
+              className="lg:col-span-5 flex justify-center relative hidden lg:flex"
             >
               <div className="relative w-full max-w-[380px] max-h-[calc(100vh-180px)] aspect-[4/5] rounded-2xl overflow-hidden glass-gold-panel p-3 group">
                 <div className="absolute inset-0 bg-gradient-to-t from-primary/90 via-transparent to-transparent z-10 pointer-events-none" />

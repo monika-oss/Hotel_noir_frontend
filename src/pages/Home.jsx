@@ -105,15 +105,34 @@ const Home = () => {
 
         {/* ================= 1. HERO SECTION ================= */}
         <section className="relative h-screen flex items-center justify-center pt-20 pb-8 px-4 md:px-8 lg:px-16 overflow-hidden z-10">
-          {/* CSS based Gold Stars Background */}
+          {/* Framer Motion based Floating Gold Particles Background */}
           <div className="absolute inset-0 overflow-hidden pointer-events-none z-0">
-            <div className="absolute top-[20%] left-[10%] w-1.5 h-1.5 bg-accent-gold/60 rounded-full blur-[1px] animate-pulse"></div>
-            <div className="absolute top-[50%] left-[80%] w-1.5 h-1.5 bg-accent-gold/40 rounded-full blur-[1px] animate-pulse" style={{ animationDelay: '1s' }}></div>
-            <div className="absolute top-[80%] left-[30%] w-2 h-2 bg-accent-gold/50 rounded-full blur-[1.5px] animate-pulse" style={{ animationDelay: '0.5s' }}></div>
-            <div className="absolute top-[15%] left-[70%] w-1 h-1 bg-accent-gold/80 rounded-full blur-[0.5px] animate-pulse" style={{ animationDelay: '1.5s' }}></div>
-            <div className="absolute top-[65%] left-[25%] w-2 h-2 bg-accent-gold/30 rounded-full blur-[1px] animate-pulse" style={{ animationDelay: '0.2s' }}></div>
-            <div className="absolute top-[40%] left-[45%] w-1.5 h-1.5 bg-accent-gold/50 rounded-full blur-[1px] animate-pulse" style={{ animationDelay: '0.8s' }}></div>
-            <div className="absolute top-[85%] left-[75%] w-2.5 h-2.5 bg-accent-gold/40 rounded-full blur-[2px] animate-pulse" style={{ animationDelay: '1.2s' }}></div>
+            {[...Array(30)].map((_, i) => (
+              <motion.div
+                key={`particle-${i}`}
+                className="absolute bg-accent-gold rounded-full blur-[1px]"
+                initial={{
+                  x: `${Math.random() * 100}vw`,
+                  y: "110vh",
+                  scale: Math.random() * 0.5 + 0.5,
+                  opacity: 0
+                }}
+                animate={{
+                  y: "-10vh",
+                  opacity: [0, Math.random() * 0.4 + 0.2, 0]
+                }}
+                transition={{
+                  duration: Math.random() * 10 + 15,
+                  repeat: Infinity,
+                  ease: "linear",
+                  delay: Math.random() * 15
+                }}
+                style={{
+                  width: `${Math.random() * 4 + 2}px`,
+                  height: `${Math.random() * 4 + 2}px`,
+                }}
+              />
+            ))}
           </div>
 
           <div className="container mx-auto grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-12 items-center relative z-10">

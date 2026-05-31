@@ -23,6 +23,7 @@ import PageTransition from '../components/PageTransition';
 import MenuCard from '../components/MenuCard';
 import TestimonialCard from '../components/TestimonialCard';
 import ReservationForm from '../components/ReservationForm';
+import CanvasParticles from '../components/CanvasParticles';
 import axios from '../api/axios';
 
 const Home = () => {
@@ -105,35 +106,8 @@ const Home = () => {
 
         {/* ================= 1. HERO SECTION ================= */}
         <section className="relative h-screen flex items-center justify-center pt-20 pb-8 px-4 md:px-8 lg:px-16 overflow-hidden z-10">
-          {/* Framer Motion based Floating Gold Particles Background */}
-          <div className="absolute inset-0 overflow-hidden pointer-events-none z-0">
-            {[...Array(30)].map((_, i) => (
-              <motion.div
-                key={`particle-${i}`}
-                className="absolute bg-accent-gold rounded-full blur-[1px]"
-                initial={{
-                  x: `${Math.random() * 100}vw`,
-                  y: "110vh",
-                  scale: Math.random() * 0.5 + 0.5,
-                  opacity: 0
-                }}
-                animate={{
-                  y: "-10vh",
-                  opacity: [0, Math.random() * 0.4 + 0.2, 0]
-                }}
-                transition={{
-                  duration: Math.random() * 10 + 15,
-                  repeat: Infinity,
-                  ease: "linear",
-                  delay: Math.random() * 15
-                }}
-                style={{
-                  width: `${Math.random() * 4 + 2}px`,
-                  height: `${Math.random() * 4 + 2}px`,
-                }}
-              />
-            ))}
-          </div>
+          {/* Smooth Canvas Gold Particles background */}
+          <CanvasParticles />
 
           <div className="container mx-auto grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-12 items-center relative z-10">
             {/* Left Content Column */}

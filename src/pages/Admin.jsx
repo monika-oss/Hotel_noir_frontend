@@ -40,6 +40,18 @@ const Admin = () => {
     }
   };
 
+  const updateOrderStatus = async (orderId, newStatus) => {
+    try {
+      await axios.put(`/orders/${orderId}/status`, { status: newStatus }, {
+        headers: { Authorization: `Bearer ${localStorage.getItem('adminToken')}` }
+      });
+      toast.success(`Order marked as ${newStatus}`);
+      fetchOrders();
+    } catch (err) {
+      toast.error('Failed to update status');
+    }
+  };
+
   const fetchMenu = async () => {
     setMenuLoading(true);
     try {
@@ -351,9 +363,21 @@ const Admin = () => {
                         </td>
                         <td className="p-4 font-bold text-accent-gold">${(order.totalAmount).toFixed(2)}</td>
                         <td className="p-4">
-                          <span className="px-2 py-1 rounded text-xs font-bold bg-accent-gold/20 text-accent-gold uppercase">
-                            {order.status}
-                          </span>
+                          <select 
+                            value={order.status} 
+                            onChange={(e) => updateOrderStatus(order._id, e.target.value)}
+                            className={`px-2 py-1 rounded text-xs font-bold uppercase border focus:outline-none cursor-pointer ${
+                              order.status === 'completed' 
+                                ? 'bg-green-500/20 text-green-500 border-green-500/30' 
+                                : order.status === 'preparing'
+                                ? 'bg-blue-500/20 text-blue-500 border-blue-500/30'
+                                : 'bg-accent-gold/20 text-accent-gold border-accent-gold/30'
+                            }`}
+                          >
+                            <option value="pending" className="bg-secondary text-text-primary">PENDING</option>
+                            <option value="preparing" className="bg-secondary text-text-primary">PREPARING</option>
+                            <option value="completed" className="bg-secondary text-text-primary">COMPLETED</option>
+                          </select>
                         </td>
                       </tr>
                     ))

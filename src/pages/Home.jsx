@@ -1,8 +1,8 @@
 import React, { useEffect, useState, useCallback, useRef } from 'react';
 import { Link } from 'react-router-dom';
 import AOS from 'aos';
-import Particles from "react-tsparticles";
-import { loadSlim } from "tsparticles-slim";
+import Particles from "@tsparticles/react";
+import { loadSlim } from "@tsparticles/slim";
 import { motion, AnimatePresence } from 'framer-motion';
 import { Swiper, SwiperSlide } from 'swiper/react';
 import { Autoplay, Pagination } from 'swiper/modules';

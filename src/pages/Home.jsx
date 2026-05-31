@@ -1,8 +1,7 @@
 import React, { useEffect, useState, useCallback, useRef } from 'react';
 import { Link } from 'react-router-dom';
 import AOS from 'aos';
-import Particles, { initParticlesEngine } from "@tsparticles/react";
-import { loadSlim } from "@tsparticles/slim";
+
 import { motion, AnimatePresence } from 'framer-motion';
 import { Swiper, SwiperSlide } from 'swiper/react';
 import { Autoplay, Pagination } from 'swiper/modules';
@@ -30,15 +29,7 @@ const Home = () => {
   const [featuredMenu, setFeaturedMenu] = useState([]);
   const [activeCategory, setActiveCategory] = useState('All');
   
-  const [init, setInit] = useState(false);
 
-  useEffect(() => {
-    initParticlesEngine(async (engine) => {
-      await loadSlim(engine);
-    }).then(() => {
-      setInit(true);
-    });
-  }, []);
 
   useEffect(() => {
     // Initialize Animate On Scroll
@@ -114,25 +105,16 @@ const Home = () => {
 
         {/* ================= 1. HERO SECTION ================= */}
         <section className="relative h-screen flex items-center justify-center pt-20 pb-8 px-4 md:px-8 lg:px-16 overflow-hidden z-10">
-          {/* Luxury Gold Particles background */}
-          {init && (
-            <Particles
-              id="tsparticles"
-            options={{
-              fullScreen: { enable: false, zIndex: -1 },
-              particles: {
-                number: { value: 35, density: { enable: true, value_area: 800 } },
-                color: { value: "#D4AF37" },
-                shape: { type: "circle" },
-                opacity: { value: 0.35, random: true, anim: { enable: true, speed: 0.8, opacity_min: 0.05, sync: false } },
-                size: { value: 2.5, random: true, anim: { enable: true, speed: 1.5, size_min: 0.1, sync: false } },
-                move: { enable: true, speed: 0.5, direction: "top", random: true, straight: false, out_mode: "out", bounce: false }
-              },
-              retina_detect: true
-            }}
-              className="absolute inset-0 pointer-events-none z-0"
-            />
-          )}
+          {/* CSS based Gold Stars Background */}
+          <div className="absolute inset-0 overflow-hidden pointer-events-none z-0">
+            <div className="absolute top-[20%] left-[10%] w-1.5 h-1.5 bg-accent-gold/60 rounded-full blur-[1px] animate-pulse"></div>
+            <div className="absolute top-[50%] left-[80%] w-1.5 h-1.5 bg-accent-gold/40 rounded-full blur-[1px] animate-pulse" style={{ animationDelay: '1s' }}></div>
+            <div className="absolute top-[80%] left-[30%] w-2 h-2 bg-accent-gold/50 rounded-full blur-[1.5px] animate-pulse" style={{ animationDelay: '0.5s' }}></div>
+            <div className="absolute top-[15%] left-[70%] w-1 h-1 bg-accent-gold/80 rounded-full blur-[0.5px] animate-pulse" style={{ animationDelay: '1.5s' }}></div>
+            <div className="absolute top-[65%] left-[25%] w-2 h-2 bg-accent-gold/30 rounded-full blur-[1px] animate-pulse" style={{ animationDelay: '0.2s' }}></div>
+            <div className="absolute top-[40%] left-[45%] w-1.5 h-1.5 bg-accent-gold/50 rounded-full blur-[1px] animate-pulse" style={{ animationDelay: '0.8s' }}></div>
+            <div className="absolute top-[85%] left-[75%] w-2.5 h-2.5 bg-accent-gold/40 rounded-full blur-[2px] animate-pulse" style={{ animationDelay: '1.2s' }}></div>
+          </div>
 
           <div className="container mx-auto grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-12 items-center relative z-10">
             {/* Left Content Column */}

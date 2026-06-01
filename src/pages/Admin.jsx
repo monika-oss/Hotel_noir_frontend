@@ -74,12 +74,30 @@ const Admin = () => {
       fetchOrders();
       fetchMenu();
 
-      // Initialize Socket.IO connection
-      const socketUrl = import.meta.env.VITE_API_URL?.replace('/api', '') || 'http://localhost:5000';
-      socket = io(socketUrl);
+      // Initialize Socket.IO connection - explicit production fallback
+      const envUrl = import.meta.env.VITE_API_URL;
+      const socketUrl = envUrl ? envUrl.replace(/\/api\/?$/, '') : 'https://hotel-noir-backend-bvam.onrender.com';
+      
+      console.log('🔗 Attempting Socket connection to:', socketUrl);
+      
+      socket = io(socketUrl, {
+        transports: ['websocket', 'polling'], // ensure websockets are used
+        withCredentials: true
+      });
 
       socket.on('connect', () => {
+        console.log('✅ Socket connected! ID:', socket.id);
+        toast.success('Live connection established 🟢', { id: 'socket-status', duration: 3000 });
         socket.emit('joinAdmin');
+      });
+
+      socket.on('connect_error', (error) => {
+        console.error('❌ Socket connection error:', error);
+        toast.error(`Connection error: ${error.message}`, { id: 'socket-error' });
+      });
+
+      socket.on('disconnect', (reason) => {
+        console.warn('⚠️ Socket disconnected:', reason);
       });
 
       socket.on('newOrder', (data) => {

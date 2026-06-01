@@ -4,6 +4,7 @@ import { FaTrash, FaCheckCircle, FaUsers, FaCalendarDay, FaClipboardList, FaShop
 import PageTransition from '../components/PageTransition';
 import axios from '../api/axios';
 import useReservationStore from '../store/reservationStore';
+import { io } from 'socket.io-client';
 
 const Admin = () => {
   const [password, setPassword] = useState('');
@@ -65,12 +66,46 @@ const Admin = () => {
   };
 
   useEffect(() => {
+    let socket;
+
     if (localStorage.getItem('adminToken')) {
       setIsAuthenticated(true);
       fetchReservations();
       fetchOrders();
       fetchMenu();
+
+      // Initialize Socket.IO connection
+      const socketUrl = import.meta.env.VITE_API_URL?.replace('/api', '') || 'http://localhost:5000';
+      socket = io(socketUrl);
+
+      socket.on('connect', () => {
+        socket.emit('joinAdmin');
+      });
+
+      socket.on('newOrder', (data) => {
+        toast.success(data.message, { duration: 5000, icon: '🍽️' });
+        fetchOrders();
+      });
+
+      socket.on('newReservation', (data) => {
+        toast.success(data.message, { duration: 5000, icon: '📅' });
+        fetchReservations();
+      });
+
+      socket.on('orderStatusUpdate', (data) => {
+        // Only show toast if it's not the admin making the change in this browser session
+        // (toast is already shown in updateOrderStatus, but good for multiple admins)
+        fetchOrders();
+      });
+
+      socket.on('newContact', (data) => {
+        toast.success(data.message, { duration: 5000, icon: '✉️' });
+      });
     }
+
+    return () => {
+      if (socket) socket.disconnect();
+    };
   }, [fetchReservations]);
 
   const handleLogin = async (e) => {

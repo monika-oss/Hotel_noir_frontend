@@ -109,9 +109,9 @@ const Home = () => {
           {/* Smooth Canvas Gold Particles background */}
           <CanvasParticles />
 
-          <div className="container mx-auto grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-12 items-center relative z-10">
+          <div className="container mx-auto grid grid-cols-1 md:grid-cols-12 gap-8 lg:gap-12 items-center relative z-10">
             {/* Left Content Column */}
-            <div className="lg:col-span-7 text-left space-y-4 lg:space-y-5 max-w-2xl">
+            <div className="md:col-span-7 text-left space-y-4 lg:space-y-5 max-w-2xl">
               <div 
                 data-aos="fade-right"
                 className="inline-flex items-center space-x-2 px-3 py-1.5 rounded-full bg-accent-gold/10 border border-accent-gold/20 text-accent-gold text-xs font-bold uppercase tracking-wider"
@@ -180,7 +180,7 @@ const Home = () => {
             <div 
               data-aos="fade-left"
               data-aos-delay="200"
-              className="lg:col-span-5 flex justify-center relative hidden lg:flex"
+              className="md:col-span-5 flex justify-center relative hidden md:flex"
             >
               <div className="relative w-full max-w-[380px] max-h-[calc(100vh-180px)] aspect-[4/5] rounded-2xl overflow-hidden glass-gold-panel p-3 group">
                 <div className="absolute inset-0 bg-gradient-to-t from-primary/90 via-transparent to-transparent z-10 pointer-events-none" />

@@ -105,7 +105,7 @@ const Home = () => {
         <div className="absolute top-[12%] right-[20%] w-2 h-2 rounded-full bg-white/40 blur-[0.5px] animate-float-slow pointer-events-none" />
 
         {/* ================= 1. HERO SECTION ================= */}
-        <section className="relative h-screen flex items-center justify-center pt-20 pb-8 px-4 md:px-8 lg:px-16 overflow-hidden z-10">
+        <section className="relative h-screen max-h-[850px] lg:max-h-none flex items-center justify-center pt-20 pb-8 px-4 md:px-8 lg:px-16 overflow-hidden z-10">
           {/* Smooth Canvas Gold Particles background */}
           <CanvasParticles />
 

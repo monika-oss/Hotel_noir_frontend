@@ -135,7 +135,7 @@ const CartSidebar = () => {
                         >
                           <div className="flex-1">
                             <h4 className="font-bold text-white text-sm">{item.title}</h4>
-                            <p className="text-accent-gold font-bold text-xs">${(item.price * item.quantity).toFixed(2)}</p>
+                            <p className="text-accent-gold font-bold text-xs">₹{(item.price * item.quantity).toFixed(2)}</p>
                           </div>
                           <div className="flex items-center space-x-3 bg-primary rounded px-2 py-1">
                             <button onClick={() => updateQuantity(item._id, item.quantity - 1)} className="text-text-muted hover:text-white"><FiMinus /></button>
@@ -184,7 +184,7 @@ const CartSidebar = () => {
               <div className="p-4 border-t border-border-gold bg-primary">
                 <div className="flex justify-between mb-4 font-bold text-white">
                   <span>Total</span>
-                  <span className="text-accent-gold">${(total).toFixed(2)}</span>
+                  <span className="text-accent-gold">₹{(total).toFixed(2)}</span>
                 </div>
                 {!isCheckout ? (
                   <button onClick={() => setIsCheckout(true)} className="w-full btn-gold py-3 text-center block">Proceed to Checkout</button>

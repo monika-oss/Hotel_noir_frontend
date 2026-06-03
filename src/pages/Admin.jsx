@@ -414,7 +414,7 @@ const Admin = () => {
                             ))}
                           </ul>
                         </td>
-                        <td className="p-4 font-bold text-accent-gold">${(order.totalAmount).toFixed(2)}</td>
+                        <td className="p-4 font-bold text-accent-gold">₹{(order.totalAmount).toFixed(2)}</td>
                         <td className="p-4">
                           <select 
                             value={order.status} 
@@ -463,7 +463,7 @@ const Admin = () => {
                         </td>
                         <td className="p-4 font-bold">{dish.title}</td>
                         <td className="p-4"><span className="px-2 py-1 bg-secondary rounded text-xs">{dish.category}</span></td>
-                        <td className="p-4 font-bold text-accent-gold">${dish.price.toFixed(2)}</td>
+                        <td className="p-4 font-bold text-accent-gold">₹{dish.price.toFixed(2)}</td>
                         <td className="p-4 text-center">
                           <button onClick={() => openMenuModal(dish)} className="text-accent-gold hover:text-white transition-colors p-2 mr-2" title="Edit">
                             <FaEdit />
@@ -497,7 +497,7 @@ const Admin = () => {
                   </div>
                   <div className="grid grid-cols-2 gap-4">
                     <div>
-                      <label className="block text-sm text-text-muted mb-1">Price ($)</label>
+                      <label className="block text-sm text-text-muted mb-1">Price (₹)</label>
                       <input type="number" step="0.01" required value={formData.price} onChange={e => setFormData({...formData, price: e.target.value})} className="w-full bg-secondary border border-border-gold rounded p-2 text-white" />
                     </div>
                     <div>

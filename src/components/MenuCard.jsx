@@ -65,7 +65,7 @@ const MenuCard = ({ item, light = false }) => {
       <div className={`p-5 flex flex-col flex-1 ${light ? 'bg-white' : 'bg-gradient-to-b from-card to-secondary/30'}`}>
         <div className="flex justify-between items-start mb-3">
           <h3 className={`text-xl font-heading font-bold tracking-wide ${light ? 'text-[#121212]' : 'text-white'}`}>{item.title}</h3>
-          <span className="text-accent-gold font-heading font-bold text-lg ml-2">${(item.price).toFixed(2)}</span>
+          <span className="text-accent-gold font-heading font-bold text-lg ml-2">₹{(item.price).toFixed(2)}</span>
         </div>
         <p className={`text-sm line-clamp-2 mb-5 flex-1 leading-relaxed ${light ? 'text-neutral-600' : 'text-text-muted'}`}>{item.description}</p>
         

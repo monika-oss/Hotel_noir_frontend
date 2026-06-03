@@ -203,7 +203,8 @@ const Admin = () => {
       setShowMenuModal(false);
       fetchMenu();
     } catch (err) {
-      toast.error('Failed to save dish');
+      console.error('Save dish error:', err.response?.data || err);
+      toast.error(err.response?.data?.message || 'Failed to save dish');
     }
   };
 
@@ -212,12 +213,12 @@ const Admin = () => {
       setIsEditing(true);
       setEditId(item._id);
       setFormData({
-        title: item.title, description: item.description, price: item.price, category: item.category, image: null
+        title: item.title, description: item.description, price: item.price, category: item.category, image: null, currentImage: item.image
       });
     } else {
       setIsEditing(false);
       setEditId(null);
-      setFormData({ title: '', description: '', price: '', category: '', image: null });
+      setFormData({ title: '', description: '', price: '', category: '', image: null, currentImage: null });
     }
     setShowMenuModal(true);
   };
@@ -506,7 +507,12 @@ const Admin = () => {
                     </div>
                   </div>
                   <div>
-                    <label className="block text-sm text-text-muted mb-1">Image {isEditing ? '(Upload to change)' : '(Upload)'}</label>
+                    <label className="block text-sm text-text-muted mb-2">Image {isEditing ? '(Upload to change)' : '(Upload)'}</label>
+                    {isEditing && formData.currentImage && (
+                      <div className="mb-3">
+                        <img src={formData.currentImage} alt="Current Dish" className="w-24 h-24 object-cover rounded border border-border-gold shadow-md" />
+                      </div>
+                    )}
                     <input type="file" accept="image/*" onChange={e => setFormData({...formData, image: e.target.files[0]})} className="w-full bg-secondary border border-border-gold rounded p-2 text-text-muted file:mr-4 file:py-2 file:px-4 file:rounded file:border-0 file:text-sm file:font-semibold file:bg-accent-gold file:text-primary hover:file:bg-hover-gold cursor-pointer" />
                   </div>
                   <div className="flex justify-end gap-4 mt-6">

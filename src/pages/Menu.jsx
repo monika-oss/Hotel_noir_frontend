@@ -44,9 +44,9 @@ const Menu = () => {
             <p className="text-gray-600 max-w-2xl mx-auto">Explore our culinary creations, crafted with passion and the finest ingredients.</p>
           </div>
 
-          <div className="flex flex-col md:flex-row justify-between items-center mb-12 space-y-6 md:space-y-0">
+          <div className="flex flex-col lg:flex-row justify-between items-center mb-12 gap-6">
             {/* Category Tabs */}
-            <div className="flex overflow-x-auto w-full md:w-auto pb-2 md:pb-0 space-x-2 md:space-x-4 no-scrollbar" data-aos="fade-right">
+            <div className="flex overflow-x-auto w-full lg:w-auto lg:flex-1 min-w-0 pb-2 space-x-2 md:space-x-4 no-scrollbar" data-aos="fade-right">
               {categories.map(cat => (
                 <button
                   key={cat}
@@ -59,7 +59,7 @@ const Menu = () => {
             </div>
 
             {/* Search Bar */}
-            <div className="relative w-full md:w-64" data-aos="fade-left">
+            <div className="relative w-full lg:w-64 flex-shrink-0" data-aos="fade-left">
               <input
                 type="text"
                 placeholder="Search menu..."

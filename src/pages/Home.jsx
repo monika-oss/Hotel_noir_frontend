@@ -224,7 +224,7 @@ const Home = () => {
         </div>
 
         {/* ================= 2. FEATURES / SERVICES SECTION ================= */}
-        <section className="py-24 px-4 md:px-8 lg:px-16 light-bg-warm light-texture-dots relative z-10 overflow-hidden">
+        <section className="py-16 lg:py-24 px-4 md:px-8 lg:px-16 light-bg-warm light-texture-dots relative z-10 overflow-hidden">
           {/* Warm glowing orbs */}
           <div className="absolute top-[-10%] left-[5%] w-[450px] h-[450px] rounded-full bg-accent-gold/8 blur-[120px] pointer-events-none z-0 animate-pulse-slow" />
           <div className="absolute bottom-[-10%] right-[5%] w-[400px] h-[400px] rounded-full bg-accent-gold/6 blur-[100px] pointer-events-none z-0" />
@@ -284,7 +284,7 @@ const Home = () => {
         </div>
 
         {/* ================= 3. PRODUCT SECTION (SIGNATURE DISHES) ================= */}
-        <section className="py-24 px-4 md:px-8 lg:px-16 relative z-10 light-bg-cream light-texture-dots overflow-hidden">
+        <section className="py-16 lg:py-24 px-4 md:px-8 lg:px-16 relative z-10 light-bg-cream light-texture-dots overflow-hidden">
           {/* Warm glowing orbs */}
           <div className="absolute top-[20%] right-[-10%] w-[500px] h-[500px] rounded-full bg-accent-gold/6 blur-[120px] pointer-events-none z-0 animate-pulse-slow" />
           <div className="absolute bottom-[10%] left-[-10%] w-[450px] h-[450px] rounded-full bg-accent-gold/8 blur-[100px] pointer-events-none z-0" />
@@ -352,7 +352,7 @@ const Home = () => {
         </div>
 
         {/* ================= 4. STATISTICS SECTION ================= */}
-        <section className="py-20 light-bg-warm relative z-10 overflow-hidden">
+        <section className="py-12 lg:py-20 light-bg-warm relative z-10 overflow-hidden">
           {/* Floating backdrop decoration */}
           <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[700px] h-[200px] bg-accent-gold/8 blur-[80px] pointer-events-none animate-pulse-slow" />
 
@@ -432,7 +432,7 @@ const Home = () => {
         </div>
 
         {/* ================= 5. TESTIMONIALS SECTION (SLIDER) ================= */}
-        <section className="py-24 px-4 md:px-8 lg:px-16 relative z-10 overflow-hidden light-bg-cream light-texture-dots light-section">
+        <section className="py-16 lg:py-24 px-4 md:px-8 lg:px-16 relative z-10 overflow-hidden light-bg-cream light-texture-dots light-section">
           {/* Warm glowing orbs */}
           <div className="absolute top-[-10%] left-[20%] w-[450px] h-[450px] rounded-full bg-accent-gold/6 blur-[120px] pointer-events-none z-0 animate-pulse-slow" />
           <div className="absolute bottom-[-15%] right-[10%] w-[400px] h-[400px] rounded-full bg-accent-gold/5 blur-[100px] pointer-events-none z-0" />
@@ -492,7 +492,7 @@ const Home = () => {
         </div>
 
         {/* ================= 6. CONTACT & RESERVATION SECTION ================= */}
-        <section className="py-24 px-4 md:px-8 lg:px-16 light-bg-warm light-texture-dots relative z-10 overflow-hidden">
+        <section className="py-16 lg:py-24 px-4 md:px-8 lg:px-16 light-bg-warm light-texture-dots relative z-10 overflow-hidden">
           {/* Warm glowing orbs */}
           <div className="absolute top-[10%] left-[-10%] w-[500px] h-[500px] rounded-full bg-accent-gold/8 blur-[130px] pointer-events-none z-0 animate-pulse-slow" />
           <div className="absolute bottom-[20%] right-[-5%] w-[450px] h-[450px] rounded-full bg-accent-gold/6 blur-[110px] pointer-events-none z-0" />

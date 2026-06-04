@@ -36,7 +36,7 @@ const Contact = () => {
 
   return (
     <PageTransition>
-      <div className="pt-24 pb-16 light-bg-cream text-gray-900">
+      <div className="pt-24 pb-16 min-h-screen overflow-hidden light-bg-cream text-gray-900">
         <div className="container mx-auto px-4 md:px-8 lg:px-16">
           <div className="text-center mb-16" data-aos="fade-up">
             <h1 className="text-5xl font-heading mb-4">Contact Us</h1>

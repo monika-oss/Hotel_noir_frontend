@@ -293,22 +293,22 @@ const Admin = () => {
             </div>
           </div>
 
-          <div className="flex flex-wrap gap-4 mb-8">
+          <div className="flex overflow-x-auto w-full gap-2 md:gap-4 mb-8 pb-2 no-scrollbar">
             <button 
               onClick={() => setActiveTab('reservations')}
-              className={`px-6 py-2 rounded font-bold transition-colors ${activeTab === 'reservations' ? 'bg-accent-gold text-primary' : 'bg-card text-text-primary border border-border-gold'}`}
+              className={`px-6 py-3 rounded-full whitespace-nowrap font-bold transition-all duration-300 ${activeTab === 'reservations' ? 'bg-accent-gold text-primary shadow-[0_0_15px_rgba(212,175,55,0.4)]' : 'bg-card text-text-muted border border-border-gold hover:text-white hover:border-accent-gold'}`}
             >
               Table Reservations
             </button>
             <button 
               onClick={() => setActiveTab('orders')}
-              className={`px-6 py-2 rounded font-bold transition-colors ${activeTab === 'orders' ? 'bg-accent-gold text-primary' : 'bg-card text-text-primary border border-border-gold'}`}
+              className={`px-6 py-3 rounded-full whitespace-nowrap font-bold transition-all duration-300 ${activeTab === 'orders' ? 'bg-accent-gold text-primary shadow-[0_0_15px_rgba(212,175,55,0.4)]' : 'bg-card text-text-muted border border-border-gold hover:text-white hover:border-accent-gold'}`}
             >
               Food Orders
             </button>
             <button 
               onClick={() => setActiveTab('menu')}
-              className={`px-6 py-2 rounded font-bold transition-colors ${activeTab === 'menu' ? 'bg-accent-gold text-primary' : 'bg-card text-text-primary border border-border-gold'}`}
+              className={`px-6 py-3 rounded-full whitespace-nowrap font-bold transition-all duration-300 ${activeTab === 'menu' ? 'bg-accent-gold text-primary shadow-[0_0_15px_rgba(212,175,55,0.4)]' : 'bg-card text-text-muted border border-border-gold hover:text-white hover:border-accent-gold'}`}
             >
               Menu Management
             </button>

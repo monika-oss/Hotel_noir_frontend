@@ -25,6 +25,8 @@ const Admin = () => {
   });
   const [editId, setEditId] = useState(null);
 
+  const [cancelModal, setCancelModal] = useState({ show: false, id: null, reason: '' });
+
   const { reservations, isLoading, fetchReservations, deleteReservation } = useReservationStore();
 
   const fetchOrders = async () => {
@@ -48,6 +50,29 @@ const Admin = () => {
       });
       toast.success(`Order marked as ${newStatus}`);
       fetchOrders();
+    } catch (err) {
+      toast.error('Failed to update status');
+    }
+  };
+
+  const handleReservationStatusChange = async (id, newStatus) => {
+    if (newStatus === 'cancelled') {
+      setCancelModal({ show: true, id, reason: '' });
+    } else {
+      updateReservationStatus(id, newStatus);
+    }
+  };
+
+  const updateReservationStatus = async (id, status, reason = '') => {
+    try {
+      await axios.put(`/reservations/${id}/status`, { status, reason }, {
+        headers: { Authorization: `Bearer ${localStorage.getItem('adminToken')}` }
+      });
+      toast.success(`Reservation marked as ${status}`);
+      fetchReservations();
+      if (status === 'cancelled') {
+        setCancelModal({ show: false, id: null, reason: '' });
+      }
     } catch (err) {
       toast.error('Failed to update status');
     }
@@ -367,9 +392,24 @@ const Admin = () => {
                         </td>
                         <td className="p-4 text-center">{res.guests}</td>
                         <td className="p-4">
-                          <span className={`px-2 py-1 rounded text-xs font-bold ${res.status === 'upcoming' ? 'bg-accent-gold/20 text-accent-gold' : 'bg-gray-500/20 text-gray-400'}`}>
-                            {res.status}
-                          </span>
+                          <select 
+                            value={res.status} 
+                            onChange={(e) => handleReservationStatusChange(res._id, e.target.value)}
+                            className={`px-2 py-1 rounded text-xs font-bold uppercase border focus:outline-none cursor-pointer ${
+                              res.status === 'completed' 
+                                ? 'bg-green-500/20 text-green-500 border-green-500/30' 
+                                : res.status === 'cancelled'
+                                ? 'bg-red-500/20 text-red-500 border-red-500/30'
+                                : res.status === 'seated'
+                                ? 'bg-blue-500/20 text-blue-500 border-blue-500/30'
+                                : 'bg-accent-gold/20 text-accent-gold border-accent-gold/30'
+                            }`}
+                          >
+                            <option value="upcoming" className="bg-secondary text-text-primary">UPCOMING</option>
+                            <option value="seated" className="bg-secondary text-text-primary">SEATED</option>
+                            <option value="completed" className="bg-secondary text-text-primary">COMPLETED</option>
+                            <option value="cancelled" className="bg-secondary text-text-primary">CANCELLED</option>
+                          </select>
                         </td>
                         <td className="p-4">
                           <div className="flex items-center justify-center">
@@ -524,6 +564,26 @@ const Admin = () => {
                     <button type="submit" className="btn-gold">{isEditing ? 'Save Changes' : 'Add Dish'}</button>
                   </div>
                 </form>
+              </div>
+            </div>
+          )}
+
+          {/* Cancel Reason Modal */}
+          {cancelModal.show && (
+            <div className="fixed inset-0 bg-black/80 flex items-center justify-center z-50 p-4">
+              <div className="bg-card border border-border-gold p-6 rounded-lg w-full max-w-md shadow-2xl">
+                <h3 className="text-2xl font-heading text-red-500 mb-4">Cancel Reservation</h3>
+                <p className="text-sm text-text-muted mb-4">Please provide a reason for cancellation. This will be sent to the customer.</p>
+                <textarea 
+                  value={cancelModal.reason} 
+                  onChange={(e) => setCancelModal({...cancelModal, reason: e.target.value})} 
+                  placeholder="e.g. Fully booked, Table unavailable..."
+                  className="w-full bg-secondary border border-border-gold rounded p-3 text-white h-24 mb-6 focus:outline-none focus:border-accent-gold"
+                ></textarea>
+                <div className="flex justify-end gap-4">
+                  <button onClick={() => setCancelModal({show: false, id: null, reason: ''})} className="px-4 py-2 border border-text-muted rounded text-text-muted hover:text-white transition-colors">Close</button>
+                  <button onClick={() => updateReservationStatus(cancelModal.id, 'cancelled', cancelModal.reason)} className="px-4 py-2 bg-red-600 text-white rounded font-bold hover:bg-red-700 transition-colors">Confirm Cancel</button>
+                </div>
               </div>
             </div>
           )}

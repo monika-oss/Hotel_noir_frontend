@@ -208,7 +208,7 @@ const Home = () => {
                   <h4 className="font-heading text-lg text-white font-bold mb-1">A Taste of Gold</h4>
                   <p className="text-xs text-text-muted">Curated plating paired with boutique reserve wines.</p>
                   <div className="mt-3 flex items-center justify-between">
-                    <span className="text-accent-gold font-bold text-sm">$48.00</span>
+                    <span className="text-accent-gold font-bold text-sm">₹1050</span>
                     <Link to="/menu" className="text-xs text-white font-bold hover:text-accent-gold transition-colors">Order Now →</Link>
                   </div>
                 </motion.div>

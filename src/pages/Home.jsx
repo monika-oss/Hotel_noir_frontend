@@ -370,12 +370,12 @@ const Home = () => {
               <div 
                 data-aos="zoom-in"
                 data-aos-delay="0"
-                className="text-center glass-gold-panel-light p-8 rounded-2xl flex flex-col items-center group hover:border-accent-gold/45"
+                className="text-center glass-gold-panel-light p-4 md:p-6 lg:p-8 rounded-2xl flex flex-col items-center group hover:border-accent-gold/45"
               >
                 <div className="text-accent-gold text-3xl mb-4 bg-accent-gold/10 w-12 h-12 rounded-full flex items-center justify-center transform group-hover:scale-110 transition-transform duration-300">
                   <FaAward />
                 </div>
-                <div className="text-4xl md:text-5xl font-heading font-bold text-[#121212] mb-2">
+                <div className="text-3xl lg:text-5xl font-heading font-bold text-[#121212] mb-2">
                   <CountUp end={15} duration={1.2} enableScrollSpy />+
                 </div>
                 <div className="text-xs uppercase font-bold tracking-wider text-neutral-500">Years of Legacy</div>
@@ -384,12 +384,12 @@ const Home = () => {
               <div 
                 data-aos="zoom-in"
                 data-aos-delay="150"
-                className="text-center glass-gold-panel-light p-8 rounded-2xl flex flex-col items-center group hover:border-accent-gold/45"
+                className="text-center glass-gold-panel-light p-4 md:p-6 lg:p-8 rounded-2xl flex flex-col items-center group hover:border-accent-gold/45"
               >
                 <div className="text-accent-gold text-3xl mb-4 bg-accent-gold/10 w-12 h-12 rounded-full flex items-center justify-center transform group-hover:scale-110 transition-transform duration-300">
                   <FaUtensils />
                 </div>
-                <div className="text-4xl md:text-5xl font-heading font-bold text-[#121212] mb-2">
+                <div className="text-3xl lg:text-5xl font-heading font-bold text-[#121212] mb-2">
                   <CountUp end={55} duration={1.2} enableScrollSpy />+
                 </div>
                 <div className="text-xs uppercase font-bold tracking-wider text-neutral-500">Artisan Dishes</div>
@@ -398,12 +398,12 @@ const Home = () => {
               <div 
                 data-aos="zoom-in"
                 data-aos-delay="300"
-                className="text-center glass-gold-panel-light p-8 rounded-2xl flex flex-col items-center group hover:border-accent-gold/45"
+                className="text-center glass-gold-panel-light p-4 md:p-6 lg:p-8 rounded-2xl flex flex-col items-center group hover:border-accent-gold/45"
               >
                 <div className="text-accent-gold text-3xl mb-4 bg-accent-gold/10 w-12 h-12 rounded-full flex items-center justify-center transform group-hover:scale-110 transition-transform duration-300">
                   <FaUsers />
                 </div>
-                <div className="text-4xl md:text-5xl font-heading font-bold text-[#121212] mb-2">
+                <div className="text-3xl lg:text-5xl font-heading font-bold text-[#121212] mb-2">
                   <CountUp end={12000} duration={1.5} enableScrollSpy separator="," />+
                 </div>
                 <div className="text-xs uppercase font-bold tracking-wider text-neutral-500">Happy Diners</div>
@@ -412,12 +412,12 @@ const Home = () => {
               <div 
                 data-aos="zoom-in"
                 data-aos-delay="450"
-                className="text-center glass-gold-panel-light p-8 rounded-2xl flex flex-col items-center group hover:border-accent-gold/45"
+                className="text-center glass-gold-panel-light p-4 md:p-6 lg:p-8 rounded-2xl flex flex-col items-center group hover:border-accent-gold/45"
               >
                 <div className="text-accent-gold text-3xl mb-4 bg-accent-gold/10 w-12 h-12 rounded-full flex items-center justify-center transform group-hover:scale-110 transition-transform duration-300">
                   <FaStar />
                 </div>
-                <div className="text-4xl md:text-5xl font-heading font-bold text-[#121212] mb-2">
+                <div className="text-3xl lg:text-5xl font-heading font-bold text-[#121212] mb-2">
                   <CountUp end={28} duration={1.2} enableScrollSpy />+
                 </div>
                 <div className="text-xs uppercase font-bold tracking-wider text-neutral-500">Global Honors</div>

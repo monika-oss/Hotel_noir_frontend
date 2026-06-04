@@ -319,7 +319,7 @@ const Admin = () => {
               <h3 className="text-2xl font-heading">
                 {activeTab === 'reservations' ? 'Recent Reservations' : activeTab === 'orders' ? 'Recent Food Orders' : 'Menu Items'}
               </h3>
-              <div className="flex gap-4 w-full md:w-auto">
+              <div className="flex flex-col sm:flex-row gap-4 w-full md:w-auto">
                 <input 
                   type="text" 
                   placeholder="Search..." 
@@ -371,10 +371,12 @@ const Admin = () => {
                             {res.status}
                           </span>
                         </td>
-                        <td className="p-4 text-center">
-                          <button onClick={() => handleDelete(res._id)} className="text-red-500 hover:text-red-400 transition-colors p-2" title="Delete">
-                            <FaTrash />
-                          </button>
+                        <td className="p-4">
+                          <div className="flex items-center justify-center">
+                            <button onClick={() => handleDelete(res._id)} className="w-8 h-8 rounded bg-red-500/10 text-red-500 flex items-center justify-center hover:bg-red-500 hover:text-white transition-colors" title="Delete">
+                              <FaTrash />
+                            </button>
+                          </div>
                         </td>
                       </tr>
                     ))
@@ -465,13 +467,15 @@ const Admin = () => {
                         <td className="p-4 font-bold">{dish.title}</td>
                         <td className="p-4"><span className="px-2 py-1 bg-secondary rounded text-xs">{dish.category}</span></td>
                         <td className="p-4 font-bold text-accent-gold">₹{dish.price.toFixed(2)}</td>
-                        <td className="p-4 text-center">
-                          <button onClick={() => openMenuModal(dish)} className="text-accent-gold hover:text-white transition-colors p-2 mr-2" title="Edit">
-                            <FaEdit />
-                          </button>
-                          <button onClick={() => handleDeleteMenu(dish._id)} className="text-red-500 hover:text-red-400 transition-colors p-2" title="Delete">
-                            <FaTrash />
-                          </button>
+                        <td className="p-4">
+                          <div className="flex items-center justify-center gap-3">
+                            <button onClick={() => openMenuModal(dish)} className="w-8 h-8 rounded bg-accent-gold/10 text-accent-gold flex items-center justify-center hover:bg-accent-gold hover:text-primary transition-colors" title="Edit">
+                              <FaEdit />
+                            </button>
+                            <button onClick={() => handleDeleteMenu(dish._id)} className="w-8 h-8 rounded bg-red-500/10 text-red-500 flex items-center justify-center hover:bg-red-500 hover:text-white transition-colors" title="Delete">
+                              <FaTrash />
+                            </button>
+                          </div>
                         </td>
                       </tr>
                     ))
